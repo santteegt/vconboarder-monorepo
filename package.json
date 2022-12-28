@@ -13,7 +13,7 @@
     "app:build": "yarn workspace @vconboarder-monorepo/frontend build",
     "app:surge": "yarn workspace @vconboarder-monorepo/frontend surge",
     "serve:dev": "yarn workspace @vconboarder-monorepo/issuer-backend serve",
-    "start": "yarn workspace @vconboarder-monorepo/issuer-backend start",
+    "serve:prod": "yarn workspace @vconboarder-monorepo/issuer-backend start",
     "serve:heroku": "yarn workspace @vconboarder-monorepo/issuer-backend heroku:dev"
  }
 }

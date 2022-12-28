@@ -1,0 +1,1 @@
+web: cd packages/issuer-backend && node index.js
