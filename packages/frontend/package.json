@@ -1,0 +1,33 @@
+{
+  "name": "@vconboarder-monorepo/frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && ENVIRONMENT=PRODUCTION vite build vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@daohaus/connect": "^0.1.1",
+    "@daohaus/form-builder": "^0.1.1",
+    "@daohaus/moloch-v3-context": "^0.1.1",
+    "@daohaus/tx-builder": "^0.1.1",
+    "@daohaus/ui": "^0.1.1",
+    "@gitcoinco/passport-sdk-reader": "^0.1.4",
+    "@gitcoinco/passport-sdk-scorer": "^0.2.0",
+    "@gitcoinco/passport-sdk-types": "^0.2.0",
+    "@gitcoinco/passport-sdk-verifier": "^0.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@types/styled-components": "^5.1.26",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.0"
+  }
+}

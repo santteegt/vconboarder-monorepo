@@ -1,0 +1,402 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "baal",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tributeToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "shares",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountGiven",
+        "type": "uint256"
+      }
+    ],
+    "name": "Onboarded",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "amountPerCredential",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "baal",
+    "outputs": [
+      {
+        "internalType": "contract IBAAL",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_moloch",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_vcVerifier",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_shares",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amountPerCredential",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_tributeToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_minTribute",
+        "type": "uint256"
+      }
+    ],
+    "name": "init",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minTribute",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "_context",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "_hash",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "id",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "provider",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct CredentialSubject",
+            "name": "credentialSubject",
+            "type": "tuple"
+          },
+          {
+            "internalType": "string",
+            "name": "expirationDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "issuanceDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "issuer",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "_context",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "created",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "proofPurpose",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "verificationMethod",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct Proof",
+            "name": "proof",
+            "type": "tuple"
+          },
+          {
+            "internalType": "string[]",
+            "name": "_type",
+            "type": "string[]"
+          }
+        ],
+        "internalType": "struct Document",
+        "name": "_credential",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint8",
+        "name": "_v",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_r",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_s",
+        "type": "bytes32"
+      }
+    ],
+    "name": "onboarder",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "_context",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "_hash",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "id",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "provider",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct CredentialSubject",
+            "name": "credentialSubject",
+            "type": "tuple"
+          },
+          {
+            "internalType": "string",
+            "name": "expirationDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "issuanceDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "issuer",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "_context",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "created",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "proofPurpose",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "verificationMethod",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct Proof",
+            "name": "proof",
+            "type": "tuple"
+          },
+          {
+            "internalType": "string[]",
+            "name": "_type",
+            "type": "string[]"
+          }
+        ],
+        "internalType": "struct Document",
+        "name": "_credential",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint8",
+        "name": "_v",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_r",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_s",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_value",
+        "type": "uint256"
+      }
+    ],
+    "name": "onboarder20",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "shares",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "tributeToken",
+    "outputs": [
+      {
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "vcVerifier",
+    "outputs": [
+      {
+        "internalType": "contract IDIDStampVcVerifier",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

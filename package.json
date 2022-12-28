@@ -1,0 +1,18 @@
+{
+  "name": "vconboarder-monorepo",
+  "version": "1.0.0",
+  "description": "VCOnboarder Monorepo",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+ ],
+ "scripts": {    
+    "app:dev": "yarn workspace @vconboarder-monorepo/frontend dev",
+    "app:build": "yarn workspace @vconboarder-monorepo/frontend build",
+    "app:surge": "yarn workspace @vconboarder-monorepo/frontend surge",
+    "serve:dev": "yarn workspace @vconboarder-monorepo/issuer-backend serve",
+    "serve:heroku": "yarn workspace @vconboarder-monorepo/issuer-backend heroku:dev"
+ }
+}
