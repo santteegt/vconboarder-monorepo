@@ -53,11 +53,6 @@ yarn app:dev
 | Goerli | [0x734812ecbF27cd8eb52ED089af37513eee593847](https://goerli.etherscan.io/address/0x734812ecbF27cd8eb52ED089af37513eee593847) | [0xd6A54B8Ad07EF14B91fc85940C7A284A589BbBcd](https://goerli.etherscan.io/address/0xd6A54B8Ad07EF14B91fc85940C7A284A589BbBcd) |
 | GnosisChain | TBD | TBD |
 
-| Contract | Goerli | Gnosis Chain |
-| ------- | ---------------------- | ----------------------------- |
-| DIDStampVCVerifier.sol | [0x734812ecbF27cd8eb52ED089af37513eee593847](https://goerli.etherscan.io/address/0x734812ecbF27cd8eb52ED089af37513eee593847) | TBD |
-| VCOnboarderShamanSummoner.sol | [0xd6A54B8Ad07EF14B91fc85940C7A284A589BbBcd](https://goerli.etherscan.io/address/0xd6A54B8Ad07EF14B91fc85940C7A284A589BbBcd) | TBD |
-
 ## Licence
 
 [MIT](LICENSE)
