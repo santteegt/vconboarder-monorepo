@@ -142,22 +142,10 @@ export const InstallForm = () => {
   const [daoId, setDaoId] = useState<string>();
   const [safeId, setSafeId] = useState<string>();
 
-  // useEffect(() => {
-  //   if (chainId) {
-  //     const params = new URLSearchParams(location.search);
-  //     const daochainParam = params.get('daochain');
-  //     const daoAddressParam = params.get('daoAddress');
-  //     setDaoChain(daochainParam ? daochainParam as keyof Keychain : chainId)
-  //     if (daoAddressParam) setDaoAddress(daoAddressParam);
-  //   }
-  // }, [chainId, location, setDaoChain, setDaoAddress]);
-
   const onSummonComplete = useCallback(() => {
-    console.log('onSummonComplete', summonTxHash, provider);
     if (provider && summonTxHash) {
       const iface = new ethers.utils.Interface(APP_ABI.SHAMAN_SUMMONER);
       provider.getTransactionReceipt(summonTxHash).then((receipt) => {
-        console.log('Receipt', receipt);
         const log = receipt.logs?.find(log =>
           log.topics[0] === ethers.utils.id('SummonVCOnboarderShaman(address,address,address,string,bool,uint256,address,uint256)')
         );
@@ -166,7 +154,6 @@ export const InstallForm = () => {
           setDaoId(event.args.baal);
           const baal = new ethers.Contract(event.args.baal, APP_ABI.BAAL, provider);
           baal.functions.avatar().then((avatar: Array<string>) => {
-            console.log('Avatar', avatar);
             setSafeId(avatar[0]);
             setSummonEvent(event);
           });
@@ -192,8 +179,6 @@ export const InstallForm = () => {
     }
   }, [chainId, location]);
 
-  console.log('Install state', summonTxHash, summonEvent);
-
   return (
     <MainContainer>
       <TXBuilder
@@ -216,7 +201,7 @@ export const InstallForm = () => {
           //   daoAddress: daoAddress,
           // }}
           defaultValues={defaults}
-          onSuccess={onSummonComplete} // TODO: Trigger add shaman proposal
+          onSuccess={onSummonComplete}
           targetNetwork={chainId || defaults?.daochain}
         />
         {summonEvent && chainId && (

@@ -1,31 +1,17 @@
-import { useEffect, useState } from 'react';
-import { matchPath, Routes as RoutesDom, Route, useLocation } from 'react-router-dom';
+import { Routes as RoutesDom, Route, useLocation } from 'react-router-dom';
 import { DHConnectProvider, DHLayout } from '@daohaus/connect';
+import { H3 } from '@daohaus/ui';
 
 import { Home } from './pages/Home';
 import { InstallForm } from './pages/Install';
 import { Onboard } from './pages/Onboard';
 import DaoContext from './context/DAOContext';
-import { H2, H3 } from '@daohaus/ui';
 
 export const Routes = () => {
   const { pathname } = useLocation();
-  const [daoChainId, setDaoChainId] = useState<string | undefined>();
-  // const pathMatch = matchPath('/:daochain/*', pathname);
-
-  // useEffect(() => {
-  //   if (pathMatch?.params?.daochain) {
-  //     setDaoChainId(pathMatch?.params?.daochain);
-  //   }
-  //   if (daoChainId && !pathMatch?.params?.daochain) {
-  //     setDaoChainId(undefined);
-  //   }
-  // }, [pathMatch?.params?.daochain, setDaoChainId, daoChainId]);
-
-  // console.log('Routes', daoChainId, pathMatch);
 
   return (
-    <DHConnectProvider daoChainId={daoChainId}>
+    <DHConnectProvider>
       <DHLayout
         leftNav={<H3>DAO Onboarder</H3>}
         pathname={pathname}

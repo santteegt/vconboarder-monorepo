@@ -3,21 +3,29 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import { ethers } from 'ethers';
 import { useDHConnect } from '@daohaus/connect';
-import { FormBuilder } from '@daohaus/form-builder';
+// import { FormBuilder } from '@daohaus/form-builder';
 import { useDao, useMembers } from '@daohaus/moloch-v3-context';
-import { TXBuilder, TXLifeCycleFns, useTxBuilder } from '@daohaus/tx-builder';
-import { Avatar, Button, Card, ErrorText, H2, H3, Link, ParMd, SingleColumnLayout, useToast } from '@daohaus/ui';
-import { ArbitraryState, ReactSetter, TXLego } from '@daohaus/utils';
-import { CeramicPassport, PassportReader } from '@gitcoinco/passport-sdk-reader';
-import { Passport } from '@gitcoinco/passport-sdk-types';
+import {
+  TXBuilder,
+  // TXLifeCycleFns,
+  useTxBuilder,
+} from '@daohaus/tx-builder';
+import { Avatar, Button, Card, ErrorText, H2, H3, Link, ParMd, useToast } from '@daohaus/ui';
+import {
+  // ArbitraryState,
+  ReactSetter,
+  // TXLego,
+} from '@daohaus/utils';
+// import { CeramicPassport, PassportReader } from '@gitcoinco/passport-sdk-reader';
+// import { Passport } from '@gitcoinco/passport-sdk-types';
 
 import { HausAnimated } from '../components/HausAnimated';
-import { FORM } from '../legos/forms';
+// import { FORM } from '../legos/forms';
 import { BrightidPlatformDetails } from '../utils/constants';
 import { DaoProfile } from '../components/DaoProfile';
 import styled from 'styled-components';
 import { APP_ABI } from '../contracts';
-import { TX } from '../legos/tx';
+// import { TX } from '../legos/tx';
 import { DIDCredential, normalizeDIDCredential } from '../utils/normalizeDIDCredential';
 import { VCOnboarderShaman } from '../types/onboarder/VCOnboarder.sol';
 
@@ -43,8 +51,6 @@ const LinkBox = styled.div`
     margin-top: 0;
   }
 `;
-
-// const graphApiKeys = { '0x1': process.env['NX_GRAPH_API_KEY_MAINNET'] };
 
 const VC_ISSUER_SERVER = import.meta.env.VITE_VC_ISSUER_SERVER;
 
@@ -108,7 +114,6 @@ const BrightIDCredentialProvider = (
         });
         return;
       }
-      console.log('brightIdContextReq', brightIdContextReq)
       const { valid, error } = brightIdContextReq.data;
       if (!valid) {
         console.error('Needs BrightID!!', error);
@@ -130,7 +135,6 @@ const BrightIDCredentialProvider = (
           type: BrightidPlatformDetails.platform,
         },
       );
-      console.log('vcChallengeReq', vcChallengeReq);
       if (vcChallengeReq.status !== 200) {
         setOnboardingState(OnboardStatus.ERROR);
         errorToast({
@@ -172,7 +176,6 @@ const BrightIDCredentialProvider = (
             challenge: credential,
           }
         );
-        console.log('vcVerifyReq', vcVerifyReq);
         if (vcVerifyReq.status !== 200 || !vcVerifyReq.data.issuedCredential || !vcVerifyReq.data.splitSignature) {
           setOnboardingState(OnboardStatus.ERROR);
           errorToast({
@@ -181,8 +184,6 @@ const BrightIDCredentialProvider = (
           });
           return;
         }
-        // console.log('preparedCredential', JSON.stringify(vcVerifyReq.data.preparedCredential));
-        // console.log('issuedCredential', JSON.stringify(vcVerifyReq.data.issuedCredential));
         setIssuedCredential({
           credential: vcVerifyReq.data.issuedCredential,
           signature: {
@@ -204,7 +205,6 @@ const BrightIDCredentialProvider = (
   }, [address, provider]);
 
   const submitOnboardTx = useCallback(async (_issuedCredential: IssuedCredential) => {
-    console.log('submitOnboardTx', _issuedCredential, onboarderAddress);
     if (!onboarderAddress) {
       setOnboardingState(OnboardStatus.ERROR);
       errorToast({
@@ -242,7 +242,6 @@ const BrightIDCredentialProvider = (
     //   });
     // };
     if (provider) {
-      console.log('SiGNER', await provider.getSigner().getAddress());
       // TODO: use typings
       const onboarder = new ethers.Contract(
         onboarderAddress,
@@ -251,7 +250,6 @@ const BrightIDCredentialProvider = (
       ) as VCOnboarderShaman;
       const tributeToken = await onboarder.functions.tributeToken();
       const minTribute = await onboarder.functions.minTribute();
-      console.log('Tribute Token', tributeToken, minTribute);
       if (tributeToken[0] === ethers.constants.AddressZero) {
         try {
           const tx = await onboarder.functions.onboarder(
@@ -278,7 +276,7 @@ const BrightIDCredentialProvider = (
           });
         }
 
-        // TODO: invalid argType due to credential struct
+        // TODO: invalid argType due to credential struct as contract param
         // await execTx(
         //   {
         //     ...TX.ONBOARD,
@@ -412,12 +410,11 @@ export const Onboard = () => {
 
 
   useEffect(() => {
+    console.log('Effect', dao?.shamen);
     if (dao?.shamen && provider) {
       findOnbarderShaman(dao.shamen.map(s => s.shamanAddress));
     }
-  }, [dao?.shamen]);
-
-  console.log('Settings', onboarderAddress);
+  }, [dao?.shamen, provider]);
 
   return (
     <div>
@@ -441,12 +438,16 @@ export const Onboard = () => {
               appState={{}}
             >
               {loading && <HausAnimated />}
-              <DaoProfile dao={dao} />
-              <BrightIDCredentialProvider
-                onboarderAddress={onboarderAddress}
-                setLoading={setLoading}
-                setHasBrightID={setHasBrightID}
-              />
+              {dao && !loading && (
+                <>
+                  <DaoProfile dao={dao} />
+                  <BrightIDCredentialProvider
+                    onboarderAddress={onboarderAddress}
+                    setLoading={setLoading}
+                    setHasBrightID={setHasBrightID}
+                  />
+                </>
+              )}
             </TXBuilder>
           </div>
           <OptsContainer>
