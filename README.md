@@ -1,5 +1,7 @@
 # VCOnboarder Monorepo
 
+## DAOHAus VCOnboarder - MolochV3 + BrightID + Verifiable Credentials
+
 VCOnboarder is a dApp and MolochV3 Shaman contract that allows you to onboard new members to your DAO through a sibling-resistant layer using verifiable credentials with on-chain verification based on [EIP-712 standard](https://eips.ethereum.org/EIPS/eip-712) for typed structured data hashing and signing [scheme](https://w3c-ccg.github.io/ethereum-eip712-signature-2021-spec/).
 
 ## Architecture
