@@ -53,6 +53,16 @@ yarn app:dev
 | Goerli | [0x734812ecbF27cd8eb52ED089af37513eee593847](https://goerli.etherscan.io/address/0x734812ecbF27cd8eb52ED089af37513eee593847) | [0xd6A54B8Ad07EF14B91fc85940C7A284A589BbBcd](https://goerli.etherscan.io/address/0xd6A54B8Ad07EF14B91fc85940C7A284A589BbBcd) |
 | GnosisChain | TBD | TBD |
 
+## Resources
+
+- [SIP Cohort 2 Opportunity 6: vive la sybil resistance!](https://community.supermodular.xyz/t/sip-cohort-2-opportunity-6-vive-la-sybil-resistance/101)
+- [Gitcoin Passport - Docs](https://docs.passport.gitcoin.co/)
+- [Gitcoin Passport - Testnet](https://testnet.passport.gitcoin.co/#/)
+- [Bringing Gitcoin Passport On-Chain [Request for Feedback]](https://gov.gitcoin.co/t/bringing-gitcoin-passport-on-chain-request-for-feedback/12267)
+- [[PoC] VC on Chain Verification](https://github.com/gitcoinco/passport/issues/617#issuecomment-1285668189)
+- [[PoC] Stamps as Soulbound Tokens](https://github.com/gitcoinco/passport/issues/618#issuecomment-1290046517)
+- [DIDKit: A cross-platform toolkit for decentralized identity](https://github.com/spruceid/didkit)
+
 ## Licence
 
 [MIT](LICENSE)
